@@ -1,0 +1,108 @@
+<?xml version="1.0"?>
+<!--
+/*! (c) jTorm and other contributors | www.jtorm.com/license */
+-->
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <virtualType name="Webmakkers\JtormTheme\Model\PhtmlTemplateConfig" type="Webmakkers\Jtorm\Model\Config">
+        <arguments>
+            <argument name="layoutConfig" xsi:type="array">
+                <item name="header" xsi:type="string">\Webmakkers\JtormTheme\Model\PhtmlTemplate\DataProvider\Header</item>
+                <item name="footer_links" xsi:type="string">\Webmakkers\JtormTheme\Model\PhtmlTemplate\DataProvider\Footer</item>
+            </argument>
+            <!-- Scope = store view ID -->
+            <argument name="scope" xsi:type="array">
+                <item name="1" xsi:type="number">1</item>
+                <item name="2" xsi:type="number">2</item>
+                <item name="3" xsi:type="number">3</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Webmakkers\JtormTheme\Model\PhtmlTemplateConfigPool" type="Webmakkers\Jtorm\Model\ConfigPool">
+        <arguments>
+            <argument name="config" xsi:type="array">
+                <item name="phtml_template_config" xsi:type="object">\Webmakkers\JtormTheme\Model\PhtmlTemplateConfig</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Webmakkers\Jtorm\Observer\ViewBlockAbstractToHtmlAfter\Compile">
+        <arguments>
+            <argument name="configPool" xsi:type="object">\Webmakkers\JtormTheme\Model\PhtmlTemplateConfigPool</argument>
+        </arguments>
+    </type>
+
+    <!-- Full page before FPC-->
+    <virtualType name="Webmakkers\JtormTheme\Model\FullPageTemplate\BeforeFpc\DataProvider\AddBodyClassFromConfig" type="Webmakkers\Jtorm\Model\DataProvider\FileDataProvider">
+        <arguments>
+            <argument name="module" xsi:type="string">Webmakkers_JtormTheme</argument>
+            <argument name="scope" xsi:type="string">frontend</argument>
+            <argument name="file" xsi:type="string">add_body_class.tss</argument>
+            <argument name="data" xsi:type="array">
+                <item name="jtorm_class" xsi:type="string">jtorm-class-from-config-before-fpc</item>
+                <item name="ttl" xsi:type="number">8640001</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Webmakkers\JtormTheme\Model\FullPageTemplateBeforeFpcConfig" type="Webmakkers\Jtorm\Model\Config">
+        <arguments>
+            <argument name="layoutConfig" xsi:type="array">
+                <item name="cms/page/view/page_id/4" xsi:type="string">\Webmakkers\JtormTheme\Model\FullPageTemplate\BeforeFpc\DataProvider\AddBodyClass</item>
+                <item name="search/term/popular" xsi:type="string">\Webmakkers\JtormTheme\Model\FullPageTemplate\BeforeFpc\DataProvider\AddBodyClassFromConfig</item>
+            </argument>
+            <!-- Scope = store view ID -->
+            <argument name="scope" xsi:type="array">
+                <item name="1" xsi:type="number">1</item>
+                <item name="2" xsi:type="number">2</item>
+                <item name="3" xsi:type="number">3</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Webmakkers\JtormTheme\Model\FullPageTemplateBeforeFpcConfigPool" type="Webmakkers\Jtorm\Model\ConfigPool">
+        <arguments>
+            <argument name="config" xsi:type="array">
+                <item name="full_page_template_config" xsi:type="object">\Webmakkers\JtormTheme\Model\FullPageTemplateBeforeFpcConfig</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Webmakkers\Jtorm\Plugin\Magento\Framework\Controller\ResultInterface\ProcessPhtmlBeforeFpc">
+        <arguments>
+            <argument name="configPool" xsi:type="object">\Webmakkers\JtormTheme\Model\FullPageTemplateBeforeFpcConfigPool</argument>
+        </arguments>
+    </type>
+
+    <!-- Full page after FPC-->
+    <virtualType name="Webmakkers\JtormTheme\Model\FullPageTemplate\AfterFpc\DataProvider\AddBodyClassFromConfig" type="Webmakkers\Jtorm\Model\DataProvider\FileDataProvider">
+        <arguments>
+            <argument name="module" xsi:type="string">Webmakkers_JtormTheme</argument>
+            <argument name="scope" xsi:type="string">frontend</argument>
+            <argument name="file" xsi:type="string">add_body_class.tss</argument>
+            <argument name="data" xsi:type="array">
+                <item name="jtorm_class" xsi:type="string">jtorm-class-from-config-after-fpc</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Webmakkers\JtormTheme\Model\FullPageTemplateAfterFpcConfig" type="Webmakkers\Jtorm\Model\Config">
+        <arguments>
+            <argument name="layoutConfig" xsi:type="array">
+                <item name="search/term/popular" xsi:type="string">\Webmakkers\JtormTheme\Model\FullPageTemplate\AfterFpc\DataProvider\AddBodyClassFromConfig</item>
+            </argument>
+            <!-- Scope = store view ID -->
+            <argument name="scope" xsi:type="array">
+                <item name="1" xsi:type="number">1</item>
+                <item name="2" xsi:type="number">2</item>
+                <item name="3" xsi:type="number">3</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <virtualType name="Webmakkers\JtormTheme\Model\FullPageTemplateAfterFpcConfigPool" type="Webmakkers\Jtorm\Model\ConfigPool">
+        <arguments>
+            <argument name="config" xsi:type="array">
+                <item name="full_page_template_config" xsi:type="object">\Webmakkers\JtormTheme\Model\FullPageTemplateAfterFpcConfig</item>
+            </argument>
+        </arguments>
+    </virtualType>
+    <type name="Webmakkers\Jtorm\Plugin\Magento\Framework\Controller\ResultInterface\ProcessPhtmlAfterFpc">
+        <arguments>
+            <argument name="configPool" xsi:type="object">\Webmakkers\JtormTheme\Model\FullPageTemplateAfterFpcConfigPool</argument>
+        </arguments>
+    </type>
+</config>
