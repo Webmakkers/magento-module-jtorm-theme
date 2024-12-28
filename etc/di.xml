@@ -3,7 +3,7 @@
 /*! (c) jTorm and other contributors | www.jtorm.com/license */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <virtualType name="Webmakkers\Jtorm\Model\HtmlTemplateConfig" type="Webmakkers\Jtorm\Model\Config">
+    <virtualType name="Webmakkers\Jtorm\Model\HtmlTemplateConfig" type="Webmakkers\Jtorm\Model\Config\Config">
         <arguments>
             <argument name="layoutConfig" xsi:type="array">
                 <item name="Magento_Checkout/template/minicart/content.html" xsi:type="string">\Webmakkers\JtormTheme\Model\HtmlTemplate\DataProvider\Magento\Checkout\Minicart\Content</item>
@@ -14,7 +14,7 @@
             </argument>
         </arguments>
     </virtualType>
-    <virtualType name="Webmakkers\Jtorm\Model\HtmlTemplateConfigPool" type="Webmakkers\Jtorm\Model\ConfigPool">
+    <virtualType name="Webmakkers\Jtorm\Model\HtmlTemplateConfigPool" type="Webmakkers\Jtorm\Model\Config\ConfigPool">
         <arguments>
             <argument name="config" xsi:type="array">
                 <item name="html_template_config" xsi:type="object">\Webmakkers\Jtorm\Model\HtmlTemplateConfig</item>

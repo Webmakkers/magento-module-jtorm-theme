@@ -5,7 +5,7 @@ declare(strict_types=1);
 
 namespace Webmakkers\JtormTheme\Model\PhtmlTemplate\DataProvider;
 
-use Webmakkers\Jtorm\Model\AbstractDataProvider;
+use Webmakkers\Jtorm\Model\DataProvider\AbstractDataProvider;
 
 class Header extends AbstractDataProvider
 {

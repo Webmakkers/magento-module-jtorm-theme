@@ -3,10 +3,11 @@
 /*! (c) jTorm and other contributors | www.jtorm.com/license */
 -->
 <config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <virtualType name="Webmakkers\JtormTheme\Model\PhtmlTemplateConfig" type="Webmakkers\Jtorm\Model\Config">
+    <virtualType name="Webmakkers\JtormTheme\Model\PhtmlTemplateConfig" type="Webmakkers\Jtorm\Model\Config\Config">
         <arguments>
             <argument name="layoutConfig" xsi:type="array">
                 <item name="header" xsi:type="string">\Webmakkers\JtormTheme\Model\PhtmlTemplate\DataProvider\Header</item>
+                <item name="category.product.type.details.renderers.configurable" xsi:type="string">\Webmakkers\JtormTheme\Model\PhtmlTemplate\DataProvider\ProductList</item>
                 <item name="footer_links" xsi:type="string">\Webmakkers\JtormTheme\Model\PhtmlTemplate\DataProvider\Footer</item>
             </argument>
             <!-- Scope = store view ID -->
@@ -17,8 +18,9 @@
             </argument>
         </arguments>
     </virtualType>
-    <virtualType name="Webmakkers\JtormTheme\Model\PhtmlTemplateConfigPool" type="Webmakkers\Jtorm\Model\ConfigPool">
+    <virtualType name="Webmakkers\JtormTheme\Model\PhtmlTemplateConfigPool" type="Webmakkers\Jtorm\Model\Config\ConfigPool">
         <arguments>
+            <argument name="cacheKeyScope" xsi:type="const">Webmakkers\Jtorm\Model\Cache\ProductKeyResolver::KEY</argument>
             <argument name="config" xsi:type="array">
                 <item name="phtml_template_config" xsi:type="object">\Webmakkers\JtormTheme\Model\PhtmlTemplateConfig</item>
             </argument>
@@ -37,12 +39,13 @@
             <argument name="scope" xsi:type="string">frontend</argument>
             <argument name="file" xsi:type="string">add_body_class.tss</argument>
             <argument name="data" xsi:type="array">
+                <item name="is_full_page" xsi:type="boolean">true</item>
                 <item name="jtorm_class" xsi:type="string">jtorm-class-from-config-before-fpc</item>
                 <item name="ttl" xsi:type="number">8640001</item>
             </argument>
         </arguments>
     </virtualType>
-    <virtualType name="Webmakkers\JtormTheme\Model\FullPageTemplateBeforeFpcConfig" type="Webmakkers\Jtorm\Model\Config">
+    <virtualType name="Webmakkers\JtormTheme\Model\FullPageTemplateBeforeFpcConfig" type="Webmakkers\Jtorm\Model\Config\Config">
         <arguments>
             <argument name="layoutConfig" xsi:type="array">
                 <item name="cms/page/view/page_id/4" xsi:type="string">\Webmakkers\JtormTheme\Model\FullPageTemplate\BeforeFpc\DataProvider\AddBodyClass</item>
@@ -56,8 +59,9 @@
             </argument>
         </arguments>
     </virtualType>
-    <virtualType name="Webmakkers\JtormTheme\Model\FullPageTemplateBeforeFpcConfigPool" type="Webmakkers\Jtorm\Model\ConfigPool">
+    <virtualType name="Webmakkers\JtormTheme\Model\FullPageTemplateBeforeFpcConfigPool" type="Webmakkers\Jtorm\Model\Config\ConfigPool">
         <arguments>
+            <argument name="key" xsi:type="string">before_fpc</argument>
             <argument name="config" xsi:type="array">
                 <item name="full_page_template_config" xsi:type="object">\Webmakkers\JtormTheme\Model\FullPageTemplateBeforeFpcConfig</item>
             </argument>
@@ -76,11 +80,12 @@
             <argument name="scope" xsi:type="string">frontend</argument>
             <argument name="file" xsi:type="string">add_body_class.tss</argument>
             <argument name="data" xsi:type="array">
+                <item name="is_full_page" xsi:type="boolean">true</item>
                 <item name="jtorm_class" xsi:type="string">jtorm-class-from-config-after-fpc</item>
             </argument>
         </arguments>
     </virtualType>
-    <virtualType name="Webmakkers\JtormTheme\Model\FullPageTemplateAfterFpcConfig" type="Webmakkers\Jtorm\Model\Config">
+    <virtualType name="Webmakkers\JtormTheme\Model\FullPageTemplateAfterFpcConfig" type="Webmakkers\Jtorm\Model\Config\Config">
         <arguments>
             <argument name="layoutConfig" xsi:type="array">
                 <item name="search/term/popular" xsi:type="string">\Webmakkers\JtormTheme\Model\FullPageTemplate\AfterFpc\DataProvider\AddBodyClassFromConfig</item>
@@ -93,8 +98,9 @@
             </argument>
         </arguments>
     </virtualType>
-    <virtualType name="Webmakkers\JtormTheme\Model\FullPageTemplateAfterFpcConfigPool" type="Webmakkers\Jtorm\Model\ConfigPool">
+    <virtualType name="Webmakkers\JtormTheme\Model\FullPageTemplateAfterFpcConfigPool" type="Webmakkers\Jtorm\Model\Config\ConfigPool">
         <arguments>
+            <argument name="key" xsi:type="string">after_fpc</argument>
             <argument name="config" xsi:type="array">
                 <item name="full_page_template_config" xsi:type="object">\Webmakkers\JtormTheme\Model\FullPageTemplateAfterFpcConfig</item>
             </argument>

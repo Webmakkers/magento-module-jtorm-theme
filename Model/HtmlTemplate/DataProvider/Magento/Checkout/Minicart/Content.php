@@ -5,7 +5,7 @@ declare(strict_types=1);
 
 namespace Webmakkers\JtormTheme\Model\HtmlTemplate\DataProvider\Magento\Checkout\Minicart;
 
-use Webmakkers\Jtorm\Model\AbstractDataProvider;
+use Webmakkers\Jtorm\Model\DataProvider\AbstractDataProvider;
 
 class Content extends AbstractDataProvider
 {

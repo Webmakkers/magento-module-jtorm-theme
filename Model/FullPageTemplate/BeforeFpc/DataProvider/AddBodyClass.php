@@ -5,12 +5,11 @@ declare(strict_types=1);
 
 namespace Webmakkers\JtormTheme\Model\FullPageTemplate\BeforeFpc\DataProvider;
 
-use Webmakkers\Jtorm\Model\AbstractDataProvider;
+use Webmakkers\Jtorm\Model\DataProvider\AbstractDataProvider;
 
 class AddBodyClass extends AbstractDataProvider
 {
-    public function isFullPage()
-    : bool
+    public function isFullPage(): bool
     {
         return true;
     }
